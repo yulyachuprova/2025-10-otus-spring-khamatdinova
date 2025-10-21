@@ -1,17 +1,20 @@
 package ru.otus;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import ru.otus.service.CSVQuestionService;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import ru.otus.service.TestService;
 
 
-public class Application
-{
-    public static void main( String[] args )
-    {
-        ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("spring-context.xml");
-        CSVQuestionService questionService = classPathXmlApplicationContext.getBean(CSVQuestionService.class);
-        questionService.displayQuestions();
+@ComponentScan
+public class Application {
+
+    public static void main(String[] args) {
+        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(Application.class);
+        TestService questionService = applicationContext.getBean(TestService.class);
+        questionService.executeTest();
 
 
     }
+
+
 }

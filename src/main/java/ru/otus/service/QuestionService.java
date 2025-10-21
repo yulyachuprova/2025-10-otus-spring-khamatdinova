@@ -9,4 +9,8 @@ public interface QuestionService {
     List<Question> getQuestions();
 
     void displayQuestions();
+
+   void displayQuestion(Question question);
+
+
 }
