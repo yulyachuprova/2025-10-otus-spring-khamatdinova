@@ -27,7 +27,7 @@ public class ConsoleIOServiceImpl implements IOService {
     }
 
     @Override
-    public void printLine(String line, Object ...args) {
-        log.info(line,args);
+    public void printLine(String line, Object... args) {
+        log.info(line, args);
     }
 }

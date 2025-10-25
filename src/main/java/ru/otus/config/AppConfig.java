@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Getter
 @Component
-public class AppConfig implements TestConfig  {
+public class AppConfig implements TestConfig {
 
 
     private final int minimumPassPercent;
@@ -16,6 +16,6 @@ public class AppConfig implements TestConfig  {
 
     public AppConfig(@Value("${exam.settings.minimum-pass-percent:90}") int minimumPassPercent, @Value("${exam.questions.file.name:exam-questions.csv}") String testFileName) {
         this.minimumPassPercent = minimumPassPercent;
-        this.testFileName=testFileName;
+        this.testFileName = testFileName;
     }
 }

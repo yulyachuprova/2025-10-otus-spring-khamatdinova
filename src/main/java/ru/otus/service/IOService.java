@@ -6,5 +6,5 @@ public interface IOService {
     String readLineWithPrompt(String prompt);
 
 
-    void printLine(String line, Object ... args);
+    void printLine(String line, Object... args);
 }

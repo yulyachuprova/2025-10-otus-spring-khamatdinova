@@ -18,7 +18,6 @@ public class ResultServiceImpl implements ResultService {
     private final TestConfig testConfig;
 
 
-
     @Override
     public void showResult(TestResult testResult) {
         ioService.printLine("=== Test results ===");

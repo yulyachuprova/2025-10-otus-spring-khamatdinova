@@ -10,7 +10,7 @@ public interface QuestionService {
 
     void displayQuestions();
 
-   void displayQuestion(Question question);
+    void displayQuestion(Question question);
 
 
 }
