@@ -1,8 +1,5 @@
-ONE_ANSWER,Which company developed the Java programming language?,Sun Microsystems,Microsoft,Google,Oracle
-ONE_ANSWER,What does CPU stand for?,Central Processing Unit,Computer Processing Unit,Central Processor Unit
-MULTI_ANSWER,Which of these are database management systems?,MySQL,PostgreSQL,MongoDB,Excel,Word
+ONE_ANSWER,Which company developed the Java programming language?,Sun Microsystems*,Microsoft,Google,Oracle
+ONE_ANSWER,What does CPU stand for?,Central Processing Unit*,Computer Processing Unit,Central Processor Unit
+MULTI_ANSWER,Which of these are database management systems?,MySQL*,PostgreSQL*,MongoDB*,Excel,Word
 FREE_ANSWER,Explain what is Cloud Computing:,
-ONE_ANSWER,What year was the first iPhone released?,2007,2005,2008,2010
-MULTI_ANSWER,Select operating systems:,Linux,Windows,iOS,Microsoft Office,Adobe Photoshop
-FREE_ANSWER,What is the difference between HTTP and HTTPS?:,
-ONE_ANSWER,Who is known as the father of computer science?,Alan Turing,Bill Gates,Steve Jobs
+ONE_ANSWER,What year was the first iPhone released?,2007*,2005,2008,2010
