@@ -33,7 +33,6 @@ public class TestServiceImpl implements TestService {
     }
 
 
-
     private TestResult runTest(Student student) {
         List<Question> questions = questionService.getQuestions();
         int score = 0;
@@ -47,7 +46,7 @@ public class TestServiceImpl implements TestService {
             }
         }
 
-        return new TestResult(student,score,questions.size());
+        return new TestResult(student, score, questions.size());
 
 
     }
@@ -56,8 +55,6 @@ public class TestServiceImpl implements TestService {
         String userAnswer = ioService.readLine().trim().toLowerCase();
         return resultService.checkAnswer(question, userAnswer);
     }
-
-
 
 
 }

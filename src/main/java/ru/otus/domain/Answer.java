@@ -15,7 +15,7 @@ public class Answer {
         return getText().endsWith("*");
     }
 
-    public String getClearText(){
+    public String getClearText() {
         return isCorrect() ? getText().substring(0, getText().length() - 1) : getText();
     }
 }

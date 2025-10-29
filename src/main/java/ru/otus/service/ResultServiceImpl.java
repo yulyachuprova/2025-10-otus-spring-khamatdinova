@@ -2,7 +2,7 @@ package ru.otus.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.otus.config.TestConfig;
+import ru.otus.config.AppConfig;
 import ru.otus.domain.Answer;
 import ru.otus.domain.Question;
 import ru.otus.domain.TestResult;
@@ -15,16 +15,14 @@ public class ResultServiceImpl implements ResultService {
 
     private final IOService ioService;
 
-    private final TestConfig testConfig;
-
-
+    private final AppConfig appConfig;
 
     @Override
     public void showResult(TestResult testResult) {
         ioService.printLine("=== Test results ===");
         ioService.printLine("Student: {} ", testResult.getStudent().getFullName());
         ioService.printLine("Score: {}/ {}", testResult.getScore(), testResult.getQuestionCount());
-        int passingScore = testResult.getQuestionCount() * testConfig.getMinimumPassPercent() / 100;
+        int passingScore = testResult.getQuestionCount() * appConfig.getMinimumPassPercent() / 100;
         ioService.printLine("Passing score: " + passingScore);
         if (testResult.getScore() >= passingScore) {
             ioService.printLine("Result: PASSED ✓");
@@ -63,14 +61,13 @@ public class ResultServiceImpl implements ResultService {
     }
 
     @Override
-
     public boolean checkAnswer(Question question, String userAnswer) {
         List<Answer> answers = question.getPossibleAnswers();
         return switch (question.getQuestionType()) {
             case ONE_ANSWER -> checkSingleChoice(answers, userAnswer);
             case MULTI_ANSWER -> checkMultipleChoice(answers, userAnswer);
             case FREE_ANSWER -> checkFreeAnswer(answers, userAnswer);
-            default -> false;
+
         };
     }
 }

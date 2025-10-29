@@ -7,5 +7,5 @@ public interface ResultService {
     void showResult(TestResult testResult);
 
 
-   boolean checkAnswer(Question question, String userAnswer);
+    boolean checkAnswer(Question question, String userAnswer);
 }

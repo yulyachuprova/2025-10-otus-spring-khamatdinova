@@ -2,6 +2,7 @@ package ru.otus.service;
 
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
+import lombok.AllArgsConstructor;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
@@ -18,21 +19,21 @@ import java.util.List;
 
 
 @Service
+@AllArgsConstructor
 public class CsvQuestionServiceImpl implements QuestionService {
 
-    private final Resource resource;
+    private final TestConfig testConfig;
 
 
     private final IOService ioService;
 
-    public CsvQuestionServiceImpl(IOService ioService, TestConfig testConfig, ResourceLoader resourceLoader) {
-        this.resource = resourceLoader.getResource(testConfig.getTestFileName());
-        this.ioService = ioService;
-    }
+    private final ResourceLoader    resourceLoader;
 
 
     @Override
     public List<Question> getQuestions() {
+        Resource resource = resourceLoader.getResource(testConfig.getTestFileName());
+        if(resource == null)  throw new QuestionLoadException("File does not exist");
         List<Question> questions = null;
         try (CSVReader reader = new CSVReader(new InputStreamReader(resource.getInputStream()))) {
             questions = reader.readAll().stream()
@@ -62,13 +63,13 @@ public class CsvQuestionServiceImpl implements QuestionService {
         ioService.printLine("{}.{} ", question.getNumber(), question.getText());
         switch (question.getQuestionType()) {
             case ONE_ANSWER -> displayPossibleAnswers(question, "Choose one letter (a, b, c, etc.):");
-            case MULTI_ANSWER -> displayPossibleAnswers(question, " Choose multiple letters (e.g., ab, acd):");
+            case MULTI_ANSWER -> displayPossibleAnswers(question, "Choose multiple letters (e.g., ab, acd):");
             case FREE_ANSWER -> ioService.printLine("Please enter your answer: ____________");
         }
     }
 
     private void displayPossibleAnswers(Question question, String instruction) {
-        ioService.printLine(" {}", instruction);
+        ioService.printLine( instruction);
         for (int j = 0; j < question.getPossibleAnswers().size(); j++) {
             ioService.printLine("   {}){}", (char) ('a' + j), question.getPossibleAnswers().get(j).getClearText());
         }

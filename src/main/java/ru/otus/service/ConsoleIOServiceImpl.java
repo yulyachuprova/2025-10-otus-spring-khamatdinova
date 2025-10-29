@@ -15,6 +15,10 @@ public class ConsoleIOServiceImpl implements IOService {
         scanner = new Scanner(System.in);
     }
 
+    public ConsoleIOServiceImpl(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
     @Override
     public String readLine() {
         return scanner.nextLine();
@@ -27,7 +31,8 @@ public class ConsoleIOServiceImpl implements IOService {
     }
 
     @Override
-    public void printLine(String line, Object ...args) {
-        log.info(line,args);
+    public void printLine(String line, Object... args) {
+        log.info(line, args);
     }
+
 }
