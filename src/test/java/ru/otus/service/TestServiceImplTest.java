@@ -1,5 +1,6 @@
 package ru.otus.service;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -14,6 +15,7 @@ import java.util.List;
 
 import static org.mockito.Mockito.*;
 
+@DisplayName("Тесты сервиса выполнения тестирования")
 @ExtendWith(MockitoExtension.class)
 class TestServiceImplTest {
     @Mock

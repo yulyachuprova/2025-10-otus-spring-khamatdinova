@@ -1,6 +1,7 @@
 package ru.otus.service;
 
 import junit.framework.Assert;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -9,16 +10,15 @@ import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.otus.config.AppConfig;
 import ru.otus.domain.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
+@DisplayName("Тесты сервиса проверки результатов тестирования")
 @ExtendWith(MockitoExtension.class)
 class ResultServiceImplTest {
-
 
     @Mock
     private IOService ioService;

@@ -4,6 +4,7 @@ import ch.qos.logback.classic.Logger;
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.read.ListAppender;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -17,11 +18,11 @@ import java.util.Scanner;
 import static junit.framework.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
+@DisplayName("Тесты сервиса ввода-вывода на консоль")
 @ExtendWith(MockitoExtension.class)
 class ConsoleIOServiceImplTest {
 
 
-    private final Logger log = (Logger) LoggerFactory.getLogger(ConsoleIOServiceImpl.class);
     @Mock
     private Scanner scanner;
 
@@ -30,15 +31,19 @@ class ConsoleIOServiceImplTest {
 
     private IOService consoleIOService;
 
+
+    private static final Logger rootLogger = (Logger) LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
+
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         consoleIOService = new ConsoleIOServiceImpl(scanner);
-        listAppender = (ListAppender<ILoggingEvent>) log.getAppender("LIST");
+        listAppender = (ListAppender<ILoggingEvent>) rootLogger.getAppender("LIST");
         listAppender.list.clear();
     }
 
 
     @Test
+    @DisplayName("Должен вернуть введенную строку")
     void readLine_ShouldReturnInput() {
         String input = "Hello!";
         Mockito.when(scanner.nextLine()).thenReturn(input);
@@ -48,6 +53,7 @@ class ConsoleIOServiceImplTest {
     }
 
     @Test
+    @DisplayName("Должен отобразить приглашение и вернуть введенную строку")
     void readLineWithPrompt_ShouldDisplayPromptAndReturnInput() {
         String input = "Ivan";
         String prompt = "Enter your name:";
@@ -60,6 +66,7 @@ class ConsoleIOServiceImplTest {
 
 
     @Test
+    @DisplayName("Должен вывести строку с аргументами")
     void testPrintLine() {
 
         String line = "line";
